@@ -1,10 +1,11 @@
 # math-training-docker #
 A docker image of [MathTraining_AspNetCore](https://github.com/Sebreiro/MathTraining_AspNetCore)
+
 Command line options
 ---
 
-`urls` - URLs the host should listen on. example: `urls=http://*:5010`
-`PostgresConnectionString` - Connection string to PostgreSQL database. example: `PostgresConnectionString=User ID=User;Password=Password;Server=localhost;Port=5432;Database=mathtrainingdb;Integrated Security=true;Pooling=true;`
+`urls` - URLs the host should listen on. example: `urls=http://*:5010`  
+`PostgresConnectionString` - Connection string to PostgreSQL database. example: `PostgresConnectionString=User ID=User;Password=Password;Server=localhost;Port=5432;Database=mathtrainingdb;Integrated Security=true;Pooling=true;`  
 
 Note
 ---
@@ -25,7 +26,5 @@ services:
       - "PostgresConnectionString=User ID=User;Password=Password;Server=db;Port=5432;Database=mathtrainingdb;Integrated Security=true;Pooling=true;"
       - "urls=http://*:5010"
     ports:
-      - 50010:5010
-    depends_on:
-      - db
+      - 50010:5010   
 ```
