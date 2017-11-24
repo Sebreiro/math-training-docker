@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  mathtraining:
+    image: sebreiro/math-training-docker
+    container_name: mathtraining
+    volumes: 
+      - /home/mathtraining/Config:/publish/Config
+    environment:
+      - "PostgresConnectionString=User ID=User;Password=Password;Server=db;Port=5432;Database=mathtrainingdb;Integrated Security=true;Pooling=true;"
+      - "urls=http://*:5010"
+    ports:
+      - 5010:5010
+    depends_on:
+      - db
+    networks:
+      - default
+
+  db:
+    image: postgres:9.6.5-alpine
+    container_name: mathtraining_postgres
+    restart: unless-stopped    
+    volumes:
+      - /home/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=User
+      - POSTGRES_PASSWORD=Password
+      - POSTGRES_DB=mathtrainingdb
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
